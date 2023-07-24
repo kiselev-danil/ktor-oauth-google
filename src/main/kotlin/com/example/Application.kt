@@ -13,6 +13,8 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.server.sessions.*
 import io.ktor.serialization.kotlinx.json.*
+import io.ktor.server.engine.*
+import io.ktor.server.netty.*
 import io.ktor.server.request.*
 import kotlinx.html.*
 import kotlinx.serialization.*
@@ -22,7 +24,13 @@ val applicationHttpClient = HttpClient(CIO) {
         json()
     }
 }
-fun Application.main(httpClient: HttpClient = applicationHttpClient) {
+
+fun main(){
+    embeddedServer(factory = Netty, port = 8080, host = "0.0.0.0", module = Application::module)
+        .start(wait = true)
+}
+
+fun Application.module(httpClient: HttpClient = applicationHttpClient) {
     install(Sessions) {
         cookie<UserSession>("user_session")
     }
