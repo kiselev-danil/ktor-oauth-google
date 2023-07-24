@@ -33,4 +33,9 @@ dependencies {
     testImplementation("io.ktor:ktor-server-test-host:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("io.ktor:ktor-server-content-negotiation:$ktor_version")
+
+    // https://mvnrepository.com/artifact/com.google.auth/google-auth-library-oauth2-http
+    implementation("com.google.auth:google-auth-library-oauth2-http:1.19.0")
+
+
 }
