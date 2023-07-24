@@ -43,7 +43,7 @@ fun Application.module(httpClient: HttpClient = applicationHttpClient) {
                     name = "google",
                     authorizeUrl = "https://accounts.google.com/o/oauth2/auth",
                     accessTokenUrl = "https://accounts.google.com/o/oauth2/token",
-                    requestMethod = HttpMethod.Post,
+                    requestMethod = HttpMethod.Get,
                     clientId = "27867488691-l2qf4snrp3avvrrdupmtr22bvfachmhs.apps.googleusercontent.com",
                     clientSecret = "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",
                     defaultScopes = listOf("https://www.googleapis.com/auth/userinfo.profile"),
@@ -73,7 +73,7 @@ fun Application.module(httpClient: HttpClient = applicationHttpClient) {
             call.respondHtml {
                 body {
                     p {
-                        a("/login") { +"Login with Google" }
+                        a("/login?redirectUrl=0.0.0.0/callback") { +"Login with Google" }
                     }
                 }
             }
